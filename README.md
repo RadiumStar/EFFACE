@@ -5,4 +5,4 @@ An Adaptive Error Feedback Mechanism Making Communication-efficient Federated Un
 
 ## More Experiment Results
 
-Please check `results.pdf`
+Please check [`results.pdf`](https://github.com/RadiumStar/EFFACE/blob/main/results.pdf)
