@@ -1,0 +1,59 @@
+# SVHN on mnist configuration 
+
+
+# general settings
+seed: 0
+cuda: 2    # if multiple GPUs, set `CUDA_VISIBLE_DEVICES="your GPU ids"`
+save: "FedAvg_svhn" 
+
+
+# dataset settings
+dataset: "svhn"
+input_channel: 3
+input_size: 32
+num_classes: 10
+
+
+# unlearning settings
+unlearn_method: "FedAvg"
+unlearn_select: "backdoor"
+target_label: 9
+src_label: null
+unlearn_perc: 0.05
+unlearn_client_perc: 1.0
+
+
+# model settings
+model: "ResNet18"
+pretrain_model: null  
+
+
+# optimizer settings
+optimizer: "SGD"
+criterion: "CrossEntropyLoss"
+
+lr: 0.01
+ft_lr: 0.1
+momentum: 0.9
+weight_decay: 0.0
+beta1: 0.9
+beta2: 0.999
+clipping: 0
+
+batch_size: 128
+
+
+# federated settings
+num_clients: 10
+partition: "non_iid"
+alpha: 0.5
+
+global_epochs: 200
+local_epochs: 1
+unlearn_epochs: 80
+refine_epochs: 20
+
+communicator: "Communicator"
+compressor: "Compressor"
+k: null
+sparsity: null

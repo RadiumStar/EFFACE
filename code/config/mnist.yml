@@ -1,0 +1,60 @@
+# CNN on mnist configuration 
+
+
+# general settings
+seed: 0
+cuda: 1    # if multiple GPUs, set `CUDA_VISIBLE_DEVICES="your GPU ids"`
+save: "FedAvg_mnist" 
+
+
+# dataset settings
+dataset: "mnist"
+input_channel: 1
+input_size: 28
+num_classes: 10
+
+
+# unlearning settings
+unlearn_method: "FedAvg"
+unlearn_select: "backdoor"
+target_label: 9
+src_label: null
+unlearn_perc: 0.1
+unlearn_client_perc: 0.5
+
+
+# model settings
+model: "CNN_MNIST"
+pretrain_model: null    
+
+
+# optimizer settings
+optimizer: "SGD"
+criterion: "CrossEntropyLoss"
+
+lr: 0.01
+ft_lr: 0.01
+momentum: 0.9
+weight_decay: 0.0
+beta1: 0.9
+beta2: 0.999
+clipping: 0
+
+batch_size: 128
+
+# federated settings
+num_clients: 50
+partition: "non_iid"
+alpha: 0.5
+
+global_epochs: 500
+local_epochs: 1
+unlearn_epochs: 200
+refine_epochs: 20
+
+communicator: "Communicator"
+compressor: "Compressor"
+k: null
+sparsity: null
+
+# python unlearning.py --communicator Communicator --unlearn_method FedAvg --cuda 3 --config config/mnist.yml --save FedAvg_mnist >> logs/temp_mnist.log & 
