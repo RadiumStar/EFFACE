@@ -1,5 +1,5 @@
 # EFFACE
-An Adaptive Error Feedback Mechanism Making Communication-efficient Federated Unlearning Possible
+Top-1 compression suffices for federated unlearning with the help of adaptive error feedback
 
 ## Code 
 
