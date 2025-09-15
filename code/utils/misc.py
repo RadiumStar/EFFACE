@@ -49,6 +49,9 @@ def save_model(model: Union[nn.Module, dict], path: str, folder: str = "saves/mo
     :param model: The model to save, can be a nn.Module or a state_dict.
     :param path: The file path where the model will be saved.
     """
+    if not os.path.exists(folder):
+        os.makedirs(folder)
+        
     if isinstance(model, nn.Module):
         torch.save(model.state_dict(), f"{folder}/{path}.pth")
     elif isinstance(model, dict):
