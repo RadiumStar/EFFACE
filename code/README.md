@@ -37,5 +37,3 @@ pip install -r requirements.txt
     ```bash
     python unlearning.py --config config/cifar100.yml --communicator EFFACE --compressor TopK --k 1 --lr 0.005 --unlearn_method FedRL --pretrain_model FedAvg_cifar100 --unlearn_epochs 30 --refine_epochs 0
     ```
-
-4. For other unlearning baselines, you can change the `--unlearn_method` arguments
