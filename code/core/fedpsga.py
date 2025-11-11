@@ -4,6 +4,7 @@
 :description: Federated Projected Stochastic Gradient Ascent Algorithm for Unlearning 
 :paper: Anisa Halimi, Swanand Kadhe, Ambrish Rawat, and Nathalie Baracaldo, Federated unlearning: How to efficiently erase a client in FL?,” arXiv preprint arXiv: 2207.05521, 2022. 
 :note: It is worth noting that the original paper only provide an unlearning method for client removal. Here we regard the unlearning dataset as a special client and do federated projected stochastic gradient ascent on it, followed by a global model refinement on the remaining clients.
+:src: https://github.com/IBM/federated-unlearning, where you can see the original implement
 """
 
 
