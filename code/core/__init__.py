@@ -14,6 +14,7 @@ from .fedgd import ClientFedGD, ServerFedGD
 from .fedga import ClientFedGA, ServerFedGA
 from .fedrl import ClientFedRL, ServerFedRL
 from .fednot import ClientFedNot, ServerFedNot
+from .fedpsga import ClientFedPSGA, ServerPSGA
 from .feduosc import ClientFedUOSC, ServerFedUOSC
 
 
