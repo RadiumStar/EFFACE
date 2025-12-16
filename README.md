@@ -6,4 +6,4 @@ See [EFFACE code overview](https://github.com/RadiumStar/EFFACE/blob/main/code/R
 
 ## More Experiment Results
 
-Please check [`results.pdf`](https://github.com/RadiumStar/EFFACE/blob/main/results.pdf)
+More Results on SVHN and Fashion-MNIST datasets, please check [`results.pdf`](https://github.com/RadiumStar/EFFACE/blob/main/results.pdf)
