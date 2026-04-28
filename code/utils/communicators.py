@@ -404,9 +404,20 @@ class EFFACE(EControl):
         # update the compressed gradient
         for name in present_update.keys(): 
             m_decompressed[name] += self.g[name]
+
+        b_flat, m_flat = {}, {}
+
+        for name in present_update.keys():
+            # new version of selection mechanism of EFFACE: | u - \eta * error - current_update |
+            b_flat[name] = b_decompressed[name] - self.eta_b * self.error[name]
+            m_flat[name] = m_decompressed[name] - self.eta_m * self.error[name]
         
-        b_flat = torch.cat([b_decompressed[name].reshape(-1) for name in b_decompressed.keys()])
-        m_flat = torch.cat([m_decompressed[name].reshape(-1) for name in m_decompressed.keys()])
+        b_flat = torch.cat([b_flat[name].reshape(-1) for name in b_flat.keys()])
+        m_flat = torch.cat([m_flat[name].reshape(-1) for name in m_flat.keys()])
+        
+        # b_flat = torch.cat([b_decompressed[name].reshape(-1) for name in b_decompressed.keys()])
+        # m_flat = torch.cat([m_decompressed[name].reshape(-1) for name in m_decompressed.keys()])
+        
         update_flat = torch.cat([present_update[name].reshape(-1) for name in present_update.keys()])
         B = torch.norm(b_flat - update_flat, p=2)
         M = torch.norm(m_flat - update_flat, p=2)
