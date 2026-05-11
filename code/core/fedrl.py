@@ -38,17 +38,13 @@ class ClientFedRL(Client):
         self.unlearning_indices = unlearning_indices
 
         # set random labels for local unlearning datasets
-        if self.args.dataset not in ['mnist']:
-            for idx in self.unlearning_indices: 
-                new_labels = list(range(self.args.num_classes)) 
-                new_labels.remove(int(self.global_dataset.dataset.targets[idx]))
-                if isinstance(self.global_dataset.dataset.targets, torch.Tensor):
-                    self.global_dataset.dataset.targets[idx] = torch.tensor(random.choice(new_labels), dtype=self.global_dataset.dataset.targets.dtype)
-                else:
-                    self.global_dataset.dataset.targets[idx] = random.choice(new_labels)
-        else:
-            for idx in self.unlearning_indices: 
-                self.global_dataset.dataset.targets[idx] = self.global_dataset.base_dataset.targets[idx]
+        for idx in self.unlearning_indices: 
+            new_labels = list(range(self.args.num_classes)) 
+            new_labels.remove(int(self.global_dataset.dataset.targets[idx]))
+            if isinstance(self.global_dataset.dataset.targets, torch.Tensor):
+                self.global_dataset.dataset.targets[idx] = torch.tensor(random.choice(new_labels), dtype=self.global_dataset.dataset.targets.dtype)
+            else:
+                self.global_dataset.dataset.targets[idx] = random.choice(new_labels) 
 
         super().set_dataloader(batch_size, shuffle)
 
