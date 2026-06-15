@@ -6,6 +6,7 @@ from .fedretrain import ClientFedRetrain, ServerFedRetrain
 from .fedgd import ClientFedGD, ServerFedGD 
 from .fedga import ClientFedGA, ServerFedGA
 from .fedrl import ClientFedRL, ServerFedRL
+from .feduosc import ClientFedUOSC, ServerFedUOSC
 
 
 def get_client_class(method: str) -> type[Client]:
