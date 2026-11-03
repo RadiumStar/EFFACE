@@ -1,0 +1,33 @@
+# Federated Random Labeling (FedRL) for MNIST
+
+SEEDS=(0 1 2 3 4 5) 
+
+DATASETS=("mnist")  
+UNLEARN_EPOCHS_ARR=(80)
+LOCAL_EPOCHS_ARR=(1)
+CUDA_GAPS=(3)
+LRS_ARR=(0.005)
+
+# with Uncompressed communication
+for i in "${!DATASETS[@]}"; do
+    DATASET="${DATASETS[$i]}"
+    UNLEARN_EPOCHS="${UNLEARN_EPOCHS_ARR[$i]}"
+    LOCAL_EPOCHS="${LOCAL_EPOCHS_ARR[$i]}"
+    LR="${LRS_ARR[$i]}"
+    CUDA_GAP="${CUDA_GAPS[$i]}"
+
+    # create log directory if it doesn't exist
+    mkdir -p "logs/${DATASET}"
+
+    # run the unlearning process with FedRL method
+    echo "Running FedRL on $DATASET (lr=$LR, unlearn_epochs=$UNLEARN_EPOCHS, local_epochs=$LOCAL_EPOCHS)" 
+    
+    for SEED in "${SEEDS[@]}"; do
+        python -u unlearning.py --seed $SEED --config "config/${DATASET}.yml" --lr $LR --unlearn_method FedRL --unlearn_epochs $UNLEARN_EPOCHS --local_epochs $LOCAL_EPOCHS --refine_epochs 0 --pretrain_model "FedAvg_${DATASET}_${SEED}" --save "FedRL_${DATASET}_${SEED}" --cuda 3 --unlearn_acc_threshold 0.05 > "logs/${DATASET}/fedrl_${DATASET}_${SEED}.log" 2>&1 &
+
+        if (( ($SEED + 1) % $CUDA_GAP == 0 )); then
+            wait
+        fi
+    done 
+    wait
+done  
