@@ -28,7 +28,7 @@ The selection mechanism presented in the ICASSP paper was optimized for empirica
 ## 🚀 Upcoming Extended Version
 We are preparing a comprehensive extension of this work that will include:
 1. **Convergence Analysis**: Detailed analysis of the convergence order for EFFACE, including the selection of the error compensation strength coefficient $\eta$.
-2. **More mechanisms designed for Federated Unlearning**: empirical mechanisms designed for federated unlearning to improve the unlearning performance. 
+2. **More mechanisms designed for Federated Unlearning**: Empirical mechanisms designed for federated unlearning to improve the unlearning performance. 
 
 *This extended manuscript is currently in preparation and will be made available soon. We appreciate your interest and patience.*
 
