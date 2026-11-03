@@ -8,6 +8,10 @@
 
 This is the official code repository for the ICASSP 2026 paper [Top-1 Compression Suffices for Federated Unlearning with the Help of Adaptive Error Feedback](https://ieeexplore.ieee.org/abstract/document/11462604)
 
+## News 
+
+We have uploaded the code of proposed novel mechanism called **LGP (Local Gradient Projection)**.
+
 ## 🐱‍💻 Code 
 See [EFFACE code overview](https://github.com/RadiumStar/EFFACE/blob/main/code/README.md) for more details. 
 
